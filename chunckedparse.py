@@ -4,6 +4,7 @@ import aloobj
 import argparse
 import collections
 import json
+import pprint
 import struct
 import sys
 
@@ -17,7 +18,8 @@ def parse_chunked(format, buf):
         chunk_id, size = unpack('<Ii', buf)
 
         sub_chunks = size < 0
-        size = abs(size)
+        # Clear the sign bit (used to indicate if a chunk contains sub-chunks)
+        size &= 0x7fffffff
 
         chunk_type = format.get(chunk_id)
 
@@ -53,11 +55,7 @@ def unpack_asciiz(buf):
 
 def parse_chunk(format, buf, parent):
     result = {}
-    content = format.get('content')
-    if not content:
-        raise InvalidOperationException(
-            'Attempting to get a content chunk from a format that does not contain a '
-            'content')
+    content = format['content']
 
     for c in content:
         name = c.get('name')
@@ -73,7 +71,7 @@ def parse_chunk(format, buf, parent):
         ct = c.get('count')
         if isinstance(ct, dict):
             # always take the first element of the given chunk type.
-            ct = parent[ct['chunk_name']][0][ct['property']]
+            ct = parent[ct['chunk_name']][0][ct['property']] * ct.get('scale', 1)
 
         if ct is None:
             if t == 'asciiz':

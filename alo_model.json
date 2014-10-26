@@ -32,7 +32,7 @@
     },
     "517": {
         "head": 517,
-        "name": "bone_v1",
+        "name": "bone",
         "content": [
             {
                 "type": "<i",
@@ -51,7 +51,7 @@
     },
     "518": {
         "head": 518,
-        "name": "bone_v2",
+        "name": "bone",
         "content": [
             {
                 "type": "<i",
@@ -256,8 +256,8 @@
         ]
     },
     "65541": {
-        "head": 65543,
-        "name": "vertex_buffer_v2",
+        "head": 65541,
+        "name": "vertex_buffer",
         "content": [
             {
                 "type": "struct",
@@ -317,7 +317,7 @@
     },
     "65543": {
         "head": 65543,
-        "name": "vertex_buffer_v2",
+        "name": "vertex_buffer",
         "content": [
             {
                 "type": "struct",
@@ -364,6 +364,26 @@
                         "name": "bone_weights"
                     }
                 ]
+            }
+        ]
+    },
+    "1536": {
+        "head": 1536,
+        "name": "connections"
+    },
+    "1538": {
+        "head": 1538,
+        "name": "object_connection",
+        "content": [
+            {
+                "type": "<I",
+                "name": "object",
+                "head": 2
+            },
+            {
+                "type": "<I",
+                "name": "bone",
+                "head": 3
             }
         ]
     }
