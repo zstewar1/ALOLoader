@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import aloobj
+import alofbx
 import argparse
 import collections
 import json
@@ -117,6 +118,8 @@ def main(args):
             print(file=args.output_file)
         elif args.output_format == 'obj':
             aloobj.dump(parse_result, output_file)
+        elif args.output_format == 'fbx':
+            alofbx.dump(parse_result, output_file)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(
@@ -128,7 +131,7 @@ if __name__ == '__main__':
         'chunked_file', type=argparse.FileType('rb'),
         help='The chunked file to be red using the specified format')
     parser.add_argument(
-        '--output-format', '-f', type=str, choices=('dict', 'json', 'obj'),
+        '--output-format', '-f', type=str, choices=('dict', 'json', 'obj', 'fbx'),
         default='dict', help='The output format of the resulting data')
     parser.add_argument(
         '--output-file', '-o', type=argparse.FileType('w'), default=sys.stdout,
