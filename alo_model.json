@@ -1,0 +1,391 @@
+{
+    "512": {
+        "head": 512,
+        "name": "skeleton"
+    },
+    "513": {
+        "head": 513,
+        "name": "bone_count",
+        "content": [
+            {
+                "type": "uint32",
+                "name": "num_bones"
+            },
+            {
+                "type": "pad",
+                "count": 124
+            }
+        ]
+    },
+    "514": {
+        "head": 514,
+        "name": "bone_container"
+    },
+    "515": {
+        "head": 515,
+        "name": "name_container",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name"
+            }
+        ]
+    },
+    "517": {
+        "head": 517,
+        "name": "bone_v1",
+        "content": [
+            {
+                "type": "int32",
+                "name": "parent"
+            },
+            {
+                "type": "uint32",
+                "name": "visible"
+            },
+            {
+                "type": "int32",
+                "count": 12,
+                "name": "matrix"
+            }
+        ]
+    },
+    "518": {
+        "head": 518,
+        "name": "bone_v2",
+        "content": [
+            {
+                "type": "int32",
+                "name": "parent"
+            },
+            {
+                "type": "uint32",
+                "name": "visible"
+            },
+            {
+                "type": "uint32",
+                "name": "billboard"
+            },
+            {
+                "type": "float32",
+                "count": 12,
+                "name": "matrix"
+            }
+        ]
+    },
+    "1024": {
+        "head": 1024,
+        "name": "mesh"
+    },
+    "1025": {
+        "head": 1025,
+        "name": "mesh_name",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name"
+            }
+        ]
+    },
+    "1026": {
+        "head": 1026,
+        "name": "mesh_information",
+        "content": [
+            {
+                "type": "uint32",
+                "name": "num_materials"
+            },
+            {
+                "type": "float32",
+                "name": "boundingBox",
+                "count": 6
+            },
+            {
+                "type": "pad",
+                "count": 4
+            },
+            {
+                "type": "uint32",
+                "name": "is_hidden"
+            },
+            {
+                "type": "uint32",
+                "name": "is_collision_enabled"
+            },
+            {
+                "type": "pad",
+                "count": 88
+            }
+        ]
+    },
+    "65792": {
+        "head": 65792,
+        "name": "sub_mesh_material_info"
+    },
+    "65793": {
+        "head": 65793,
+        "name": "shader_filename",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name"
+            }
+        ]
+    },
+    "65794": {
+        "head": 65794,
+        "name": "shader_parameter_int",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name",
+                "head": 1
+            },
+            {
+                "type": "int32",
+                "name": "value",
+                "head": 2
+            }
+        ]
+    },
+    "65795": {
+        "head": 65795,
+        "name": "shader_parameter_float",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name",
+                "head": 1
+            },
+            {
+                "type": "float32",
+                "name": "value",
+                "head": 2
+            }
+        ]
+    },
+    "65796": {
+        "head": 65796,
+        "name": "shader_parameter_float",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name",
+                "head": 1
+            },
+            {
+                "type": "float32",
+                "name": "value",
+                "count": 3,
+                "head": 2
+            }
+        ]
+    },
+    "65797": {
+        "head": 65797,
+        "name": "shader_parameter_texture",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name",
+                "head": 1
+            },
+            {
+                "type": "asciiz",
+                "name": "value",
+                "head": 2
+            }
+        ]
+    },
+    "65798": {
+        "head": 65798,
+        "name": "shader_parameter_float",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "name",
+                "head": 1
+            },
+            {
+                "type": "float32",
+                "name": "value",
+                "count": 4,
+                "head": 2
+            }
+        ]
+    },
+    "65536": {
+        "head": 65536,
+        "name": "sub_mesh_data"
+    },
+    "65537": {
+        "head": 65537,
+        "name": "sub_mesh_information",
+        "content": [
+            {
+                "type": "uint32",
+                "name": "num_verts"
+            },
+            {
+                "type": "uint32",
+                "name": "num_primitives"
+            },
+            {
+                "type": "pad",
+                "count": 120
+            }
+        ]
+    },
+    "65538": {
+        "head": 65538,
+        "name": "vertex_format",
+        "content": [
+            {
+                "type": "asciiz",
+                "name": "format"
+            }
+        ]
+    },
+    "65540": {
+        "head": 65540,
+        "name": "index_buffer",
+        "content": [
+            {
+                "type": "int16",
+                "name": "indices",
+                "count": {
+                    "chunk_id": 65537,
+                    "property": "num_primitives",
+                    "scale": 3
+                }
+            }
+        ]
+    },
+    "65541": {
+        "head": 65543,
+        "name": "vertex_buffer_v2",
+        "content": [
+            {
+                "type": "struct",
+                "name": "buffer",
+                "count": {
+                    "chunk_id": 65537,
+                    "property": "num_verts"
+                },
+                "content": [
+                    {
+                        "type": "float32",
+                        "name": "position",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "normal",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "tex_coords",
+                        "count": 8
+                    },
+                    {
+                        "type": "float32",
+                        "name": "tangent",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "binormal",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "color",
+                        "count": 4
+                    },
+                    {
+                        "type": "uint32",
+                        "name": "bone_indices",
+                        "count": 4
+                    },
+                    {
+                        "type": "float32",
+                        "name": "bone_weights",
+                        "count": 4
+                    }
+                ]
+            }
+        ]
+    },
+    "65542": {
+        "head": 65542,
+        "name": "animation_mapping",
+        "content": [
+            {
+                "type": "uint32",
+                "name": "bone",
+                "count": "max"
+            }
+        ]
+    },
+    "65543": {
+        "head": 65543,
+        "name": "vertex_buffer_v2",
+        "content": [
+            {
+                "type": "struct",
+                "name": "buffer",
+                "count": {
+                    "chunk_id": 65537,
+                    "property": "num_verts"
+                },
+                "content": [
+                    {
+                        "type": "float32",
+                        "name": "position",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "normal",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "tex_coords",
+                        "count": 8
+                    },
+                    {
+                        "type": "float32",
+                        "name": "tangent",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "binormal",
+                        "count": 3
+                    },
+                    {
+                        "type": "float32",
+                        "name": "color",
+                        "count": 4
+                    },
+                    {
+                        "type": "pad",
+                        "count": 16
+                    },
+                    {
+                        "type": "uint32",
+                        "name": "bone_indices",
+                        "count": 4
+                    },
+                    {
+                        "type": "float32",
+                        "name": "bone_weights",
+                        "count": 4
+                    }
+                ]
+            }
+        ]
+    }
+}
