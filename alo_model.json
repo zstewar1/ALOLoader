@@ -8,12 +8,11 @@
         "name": "bone_count",
         "content": [
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "num_bones"
             },
             {
-                "type": "pad",
-                "count": 124
+                "type": "124x"
             }
         ]
     },
@@ -36,16 +35,16 @@
         "name": "bone_v1",
         "content": [
             {
-                "type": "int32",
+                "type": "<i",
                 "name": "parent"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "visible"
             },
             {
-                "type": "int32",
-                "count": 12,
+                "type": "<4i",
+                "count": 3,
                 "name": "matrix"
             }
         ]
@@ -55,20 +54,20 @@
         "name": "bone_v2",
         "content": [
             {
-                "type": "int32",
+                "type": "<i",
                 "name": "parent"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "visible"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "billboard"
             },
             {
-                "type": "float32",
-                "count": 12,
+                "type": "<4f",
+                "count": 3,
                 "name": "matrix"
             }
         ]
@@ -92,29 +91,27 @@
         "name": "mesh_information",
         "content": [
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "num_materials"
             },
             {
-                "type": "float32",
+                "type": "<3f",
                 "name": "boundingBox",
-                "count": 6
+                "count": 2
             },
             {
-                "type": "pad",
-                "count": 4
+                "type": "4x"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "is_hidden"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "is_collision_enabled"
             },
             {
-                "type": "pad",
-                "count": 88
+                "type": "88x"
             }
         ]
     },
@@ -142,7 +139,7 @@
                 "head": 1
             },
             {
-                "type": "int32",
+                "type": "<i",
                 "name": "value",
                 "head": 2
             }
@@ -158,7 +155,7 @@
                 "head": 1
             },
             {
-                "type": "float32",
+                "type": "<f",
                 "name": "value",
                 "head": 2
             }
@@ -174,9 +171,8 @@
                 "head": 1
             },
             {
-                "type": "float32",
+                "type": "<3f",
                 "name": "value",
-                "count": 3,
                 "head": 2
             }
         ]
@@ -207,9 +203,8 @@
                 "head": 1
             },
             {
-                "type": "float32",
+                "type": "<4f",
                 "name": "value",
-                "count": 4,
                 "head": 2
             }
         ]
@@ -223,16 +218,15 @@
         "name": "sub_mesh_information",
         "content": [
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "num_verts"
             },
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "num_primitives"
             },
             {
-                "type": "pad",
-                "count": 120
+                "type": "120x"
             }
         ]
     },
@@ -251,10 +245,10 @@
         "name": "index_buffer",
         "content": [
             {
-                "type": "int16",
+                "type": "<H",
                 "name": "indices",
                 "count": {
-                    "chunk_id": 65537,
+                    "chunk_name": "sub_mesh_information",
                     "property": "num_primitives",
                     "scale": 3
                 }
@@ -269,49 +263,42 @@
                 "type": "struct",
                 "name": "buffer",
                 "count": {
-                    "chunk_id": 65537,
+                    "chunk_name": "sub_mesh_information",
                     "property": "num_verts"
                 },
                 "content": [
                     {
-                        "type": "float32",
-                        "name": "position",
-                        "count": 3
+                        "type": "<3f",
+                        "name": "position"
                     },
                     {
-                        "type": "float32",
-                        "name": "normal",
-                        "count": 3
+                        "type": "<3f",
+                        "name": "normal"
                     },
                     {
-                        "type": "float32",
+                        "type": "<2f",
                         "name": "tex_coords",
-                        "count": 8
-                    },
-                    {
-                        "type": "float32",
-                        "name": "tangent",
-                        "count": 3
-                    },
-                    {
-                        "type": "float32",
-                        "name": "binormal",
-                        "count": 3
-                    },
-                    {
-                        "type": "float32",
-                        "name": "color",
                         "count": 4
                     },
                     {
-                        "type": "uint32",
-                        "name": "bone_indices",
-                        "count": 4
+                        "type": "<3f",
+                        "name": "tangent"
                     },
                     {
-                        "type": "float32",
-                        "name": "bone_weights",
-                        "count": 4
+                        "type": "<3f",
+                        "name": "binormal"
+                    },
+                    {
+                        "type": "<4f",
+                        "name": "color"
+                    },
+                    {
+                        "type": "<4I",
+                        "name": "bone_indices"
+                    },
+                    {
+                        "type": "<4f",
+                        "name": "bone_weights"
                     }
                 ]
             }
@@ -322,7 +309,7 @@
         "name": "animation_mapping",
         "content": [
             {
-                "type": "uint32",
+                "type": "<I",
                 "name": "bone",
                 "count": "max"
             }
@@ -336,53 +323,45 @@
                 "type": "struct",
                 "name": "buffer",
                 "count": {
-                    "chunk_id": 65537,
+                    "chunk_name": "sub_mesh_information",
                     "property": "num_verts"
                 },
                 "content": [
                     {
-                        "type": "float32",
-                        "name": "position",
-                        "count": 3
+                        "type": "<3f",
+                        "name": "position"
                     },
                     {
-                        "type": "float32",
-                        "name": "normal",
-                        "count": 3
+                        "type": "<3f",
+                        "name": "normal"
                     },
                     {
-                        "type": "float32",
+                        "type": "<2f",
                         "name": "tex_coords",
-                        "count": 8
-                    },
-                    {
-                        "type": "float32",
-                        "name": "tangent",
-                        "count": 3
-                    },
-                    {
-                        "type": "float32",
-                        "name": "binormal",
-                        "count": 3
-                    },
-                    {
-                        "type": "float32",
-                        "name": "color",
                         "count": 4
                     },
                     {
-                        "type": "pad",
-                        "count": 16
+                        "type": "<3f",
+                        "name": "tangent"
                     },
                     {
-                        "type": "uint32",
-                        "name": "bone_indices",
-                        "count": 4
+                        "type": "<3f",
+                        "name": "binormal"
                     },
                     {
-                        "type": "float32",
-                        "name": "bone_weights",
-                        "count": 4
+                        "type": "<4f",
+                        "name": "color"
+                    },
+                    {
+                        "type": "<16x"
+                    },
+                    {
+                        "type": "<4I",
+                        "name": "bone_indices"
+                    },
+                    {
+                        "type": "<4f",
+                        "name": "bone_weights"
                     }
                 ]
             }
