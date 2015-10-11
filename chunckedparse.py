@@ -1,17 +1,9 @@
-#!/usr/bin/env python3
-
-import aloobj
-import argparse
 import collections
-import json
-import pprint
 import struct
-import sys
 
-def load_format(file):
-    return {int(k): v for k,v in json.load(file).items()}
+from aloformat import aloformat
 
-def parse_chunked(format, buf):
+def parse_chunked(buf):
     chunk_data = collections.defaultdict(list)
 
     while buf:
@@ -21,11 +13,11 @@ def parse_chunked(format, buf):
         # Clear the sign bit (used to indicate if a chunk contains sub-chunks)
         size &= 0x7fffffff
 
-        chunk_type = format.get(chunk_id)
+        chunk_type = aloformat.get(chunk_id)
 
         if chunk_type:
             if sub_chunks:
-                chunk_data[chunk_type['name']].append(parse_chunked(format, buf[:size]))
+                chunk_data[chunk_type['name']].append(parse_chunked(buf[:size]))
             else:
                 chunk_data[chunk_type['name']].append(parse_chunk(
                     chunk_type, buf[:size], chunk_data))
@@ -33,12 +25,12 @@ def parse_chunked(format, buf):
 
     return chunk_data
 
-def unpack(format, buf):
+def unpack(fmt, buf):
     """Both unpack and delete. Convert single-element tuples to their element"""
-    result = struct.unpack_from(format, buf)
+    result = struct.unpack_from(fmt, buf)
     if len(result) == 1:
         result = result[0]
-    del buf[:struct.calcsize(format)]
+    del buf[:struct.calcsize(fmt)]
     return result
 
 def unpack_asciiz(buf):
@@ -53,9 +45,9 @@ def unpack_asciiz(buf):
     del buf[:l+1]
     return result
 
-def parse_chunk(format, buf, parent):
+def parse_chunk(fmt, buf, parent):
     result = {}
-    content = format['content']
+    content = fmt['content']
 
     for c in content:
         name = c.get('name')
@@ -117,22 +109,3 @@ def main(args):
             print(file=args.output_file)
         elif args.output_format == 'obj':
             aloobj.dump(parse_result, output_file)
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(
-        description='Load chunked files based on a json descripton')
-    parser.add_argument(
-        'json_file', type=argparse.FileType('r'),
-        help='The json file which describes the chunked format to be used')
-    parser.add_argument(
-        'chunked_file', type=argparse.FileType('rb'),
-        help='The chunked file to be read using the specified format')
-    parser.add_argument(
-        '--output-format', '-f', type=str, choices=('dict', 'json', 'obj'),
-        default='dict', help='The output format of the resulting data')
-    parser.add_argument(
-        '--output-file', '-o', type=argparse.FileType('w'), default=sys.stdout,
-        help='where to store the output of the operation (default: stdout)')
-
-
-    main(parser.parse_args())
