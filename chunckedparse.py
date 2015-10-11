@@ -126,7 +126,7 @@ if __name__ == '__main__':
         help='The json file which describes the chunked format to be used')
     parser.add_argument(
         'chunked_file', type=argparse.FileType('rb'),
-        help='The chunked file to be red using the specified format')
+        help='The chunked file to be read using the specified format')
     parser.add_argument(
         '--output-format', '-f', type=str, choices=('dict', 'json', 'obj'),
         default='dict', help='The output format of the resulting data')
