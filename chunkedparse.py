@@ -1,9 +1,7 @@
 import collections
 import struct
 
-from aloformat import aloformat
-
-def parse_chunked(buf):
+def parse_chunked(fmt, buf):
     chunk_data = collections.defaultdict(list)
 
     while buf:
@@ -13,11 +11,11 @@ def parse_chunked(buf):
         # Clear the sign bit (used to indicate if a chunk contains sub-chunks)
         size &= 0x7fffffff
 
-        chunk_type = aloformat.get(chunk_id)
+        chunk_type = fmt.get(chunk_id)
 
         if chunk_type:
             if sub_chunks:
-                chunk_data[chunk_type['name']].append(parse_chunked(buf[:size]))
+                chunk_data[chunk_type['name']].append(parse_chunked(fmt, buf[:size]))
             else:
                 chunk_data[chunk_type['name']].append(parse_chunk(
                     chunk_type, buf[:size], chunk_data))
@@ -92,20 +90,3 @@ def parse_chunk(fmt, buf, parent):
                     result[name].append(unpack(t, buf))
 
     return result
-
-def main(args):
-    with args.json_file as json_file, args.chunked_file as chunked_file,\
-        args.output_file as output_file:
-
-        format = load_format(json_file)
-        buf = bytearray(chunked_file.read())
-
-        parse_result = parse_chunked(format, buf)
-
-        if args.output_format == 'dict':
-            print(parse_result, file=args.output_file)
-        elif args.output_format == 'json':
-            json.dump(parse_result, output_file)
-            print(file=args.output_file)
-        elif args.output_format == 'obj':
-            aloobj.dump(parse_result, output_file)

@@ -1,5 +1,5 @@
 aloformat = {
-    65537: {
+    0x10001: {
         'content': [
             {
                 'type': '<I',
@@ -13,10 +13,10 @@ aloformat = {
                 'type': '120x'
             },
         ],
-        'head': 65537,
+        'head': 0x10001,
         'name': 'sub_mesh_information',
     },
-    65540: {
+    0x10004: {
         'content': [
             {
                 'type': '<H',
@@ -28,10 +28,10 @@ aloformat = {
                 'name': 'indices',
             },
         ],
-        'head': 65540,
+        'head': 0x10004,
         'name': 'index_buffer',
     },
-    65542: {
+    0x10006: {
         'content': [
             {
                 'type': '<I',
@@ -39,10 +39,10 @@ aloformat = {
                 'name': 'bone',
             }
         ],
-        'head': 65542,
+        'head': 0x10006,
         'name': 'animation_mapping'
     },
-    513: {
+    0x201: {
         'content': [
             {
                 'type': '<I',
@@ -52,34 +52,34 @@ aloformat = {
                 'type': '124x',
             },
         ],
-        'head': 513,
+        'head': 0x201,
         'name': 'bone_count',
     },
-    65538: {
+    0x10002: {
         'content': [
             {
                 'type': 'asciiz',
                 'name': 'format',
             },
         ],
-        'head': 65538,
+        'head': 0x10002,
         'name': 'vertex_format',
     },
-    1536: {
-        'head': 1536,
+    0x600: {
+        'head': 0x600,
         'name': 'connections',
     },
-    65793: {
+    0x10101: {
         'content': [
             {
                 'type': 'asciiz',
                 'name': 'name',
             },
         ],
-        'head': 65793,
+        'head': 0x10101,
         'name': 'shader_filename',
     },
-    65543: {
+    0x10007: {
         'content': [
             {
                 'type': 'struct',
@@ -128,10 +128,10 @@ aloformat = {
                 'name': 'buffer',
             },
         ],
-        'head': 65543,
+        'head': 0x10007,
         'name': 'vertex_buffer',
     },
-    517: {
+    0x205: {
         'content': [
             {
                 'type': '<i',
@@ -147,52 +147,52 @@ aloformat = {
                 'count': 3,
             },
         ],
-        'head': 517,
+        'head': 0x205,
         'name': 'bone',
     },
-    1025: {
+    0x401: {
         'content': [
             {
                 'type': 'asciiz',
                 'name': 'name',
             },
         ],
-        'head': 1025,
+        'head': 0x401,
         'name': 'mesh_name',
     },
-    65797: {
+    0x10105: {
         'content': [
             {
                 'type': 'asciiz',
-                'head': 1,
+                'head': 0x1,
                 'name': 'name',
             },
             {
                 'type': 'asciiz',
-                'head': 2,
+                'head': 0x2,
                 'name': 'value',
             },
         ],
-        'head': 65797,
+        'head': 0x10105,
         'name': 'shader_parameter_texture',
     },
-    1538: {
+    0x602: {
         'content': [
             {
                 'type': '<I',
-                'head': 2,
+                'head': 0x2,
                 'name': 'object',
             },
             {
                 'type': '<I',
-                'head': 3,
+                'head': 0x3,
                 'name': 'bone',
             },
         ],
-        'head': 1538,
+        'head': 0x602,
         'name': 'object_connection',
     },
-    65541: {
+    0x10005: {
         'content': [
             {
                 'type': 'struct',
@@ -238,48 +238,48 @@ aloformat = {
                 'name': 'buffer',
             },
         ],
-        'head': 65541,
+        'head': 0x10005,
         'name': 'vertex_buffer',
     },
-    515: {
+    0x203: {
         'content': [
             {
                 'type': 'asciiz',
                 'name': 'name',
             },
         ],
-        'head': 515,
+        'head': 0x203,
         'name': 'name_container',
     },
-    1024: {
-        'head': 1024,
+    0x400: {
+        'head': 0x400,
         'name': 'mesh',
     },
-    514: {
-        'head': 514,
+    0x202: {
+        'head': 0x202,
         'name': 'bone_container',
     },
-    512: {
-        'head': 512,
+    0x200: {
+        'head': 0x200,
         'name': 'skeleton',
     },
-    65796: {
+    0x10104: {
         'content': [
             {
                 'type': 'asciiz',
-                'head': 1,
+                'head': 0x1,
                 'name': 'name',
             },
             {
                 'type': '<3f',
-                'head': 2,
+                'head': 0x2,
                 'name': 'value',
             },
         ],
-        'head': 65796,
+        'head': 0x10104,
         'name': 'shader_parameter_float',
     },
-    1026: {
+    0x402: {
         'content': [
             {
                 'type': '<I',
@@ -305,46 +305,46 @@ aloformat = {
                 'type': '88x',
             },
         ],
-        'head': 1026,
+        'head': 0x402,
         'name': 'mesh_information',
     },
-    65794: {
+    0x10102: {
         'content': [
             {
                 'type': 'asciiz',
-                'head': 1,
+                'head': 0x1,
                 'name': 'name',
             },
             {
                 'type': '<i',
-                'head': 2,
+                'head': 0x2,
                 'name': 'value',
             },
         ],
-        'head': 65794,
+        'head': 0x10102,
         'name': 'shader_parameter_int',
     },
-    65792: {
-        'head': 65792,
+    0x10100: {
+        'head': 0x10100,
         'name': 'sub_mesh_material_info',
     },
-    65798: {
+    0x10106: {
         'content': [
             {
                 'type': 'asciiz',
-                'head': 1,
+                'head': 0x1,
                 'name': 'name',
             },
             {
                 'type': '<4f',
-                'head': 2,
+                'head': 0x2,
                 'name': 'value',
             },
         ],
-        'head': 65798,
+        'head': 0x10106,
         'name': 'shader_parameter_float',
     },
-    518: {
+    0x206: {
         'content': [
             {
                 'type': '<i',
@@ -364,27 +364,27 @@ aloformat = {
                 'count': 3,
             },
         ],
-        'head': 518,
+        'head': 0x206,
         'name': 'bone',
     },
-    65795: {
+    0x10103: {
         'content': [
             {
                 'type': 'asciiz',
-                'head': 1,
+                'head': 0x1,
                 'name': 'name',
             },
             {
                 'type': '<f',
-                'head': 2,
+                'head': 0x2,
                 'name': 'value',
             },
         ],
-        'head': 65795,
+        'head': 0x10103,
         'name': 'shader_parameter_float',
     },
-    65536: {
-        'head': 65536,
+    0x10000: {
+        'head': 0x10000,
         'name': 'sub_mesh_data',
     },
 }
